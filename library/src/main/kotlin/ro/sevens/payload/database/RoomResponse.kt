@@ -1,6 +1,9 @@
-package ro.sevens.payload
+package ro.sevens.pojo.database
 
 import com.google.gson.annotations.SerializedName
+import ro.sevens.pojo.base.GameTypeData
+import ro.sevens.pojo.base.RoomData
+import ro.sevens.pojo.base.RoomStatusData
 
 /**
  * server
@@ -21,40 +24,15 @@ import com.google.gson.annotations.SerializedName
  * along with server.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-class Card(
-    @SerializedName("number")
-    val number: Int,
+class RoomResponse(
+    @SerializedName("id")
+    override val id: Long,
     @SerializedName("type")
-    val type: Type
-) {
-
-    override fun toString(): String {
-        return "$number$type"
-    }
-
-    fun canCut(card: Card, playerCount: Int): Boolean {
-        return card.number == number || number == 7 || (playerCount == 3 && number == 8)
-    }
-
-    fun theSame(card: Card): Boolean {
-        return number == card.number && type == card.type
-    }
-
-    val isPoint: Boolean
-        get() = number == 10 || number == 11
-
-    enum class Type {
-        @SerializedName("neagra")
-        NEAGRA,
-
-        @SerializedName("rosie")
-        ROSIE,
-
-        @SerializedName("romb")
-        ROMB,
-
-        @SerializedName("trefla")
-        TREFLA
-    }
-
-}
+    override val type: GameTypeData,
+    @SerializedName("status")
+    override val status: RoomStatusData,
+    @SerializedName("isPrivate")
+    override val isPrivate: Boolean,
+    @SerializedName("code")
+    override val code: Int?
+) : RoomData

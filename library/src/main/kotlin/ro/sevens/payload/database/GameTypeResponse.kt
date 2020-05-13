@@ -1,6 +1,7 @@
-package ro.sevens.payload
+package ro.sevens.pojo.database
 
 import com.google.gson.annotations.SerializedName
+import ro.sevens.pojo.base.GameTypeData
 
 /**
  * server
@@ -21,40 +22,22 @@ import com.google.gson.annotations.SerializedName
  * along with server.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-class Card(
-    @SerializedName("number")
-    val number: Int,
-    @SerializedName("type")
-    val type: Type
-) {
+class GameTypeResponse(
 
-    override fun toString(): String {
-        return "$number$type"
-    }
+    @SerializedName("name")
+    override val name: String,
 
-    fun canCut(card: Card, playerCount: Int): Boolean {
-        return card.number == number || number == 7 || (playerCount == 3 && number == 8)
-    }
+    @SerializedName("description")
+    override val description: String,
 
-    fun theSame(card: Card): Boolean {
-        return number == card.number && type == card.type
-    }
+    @SerializedName("maxPlayers")
+    override val maxPlayers: Int,
 
-    val isPoint: Boolean
-        get() = number == 10 || number == 11
+    @SerializedName("teamAllowed")
+    override val teamAllowed: Boolean,
 
-    enum class Type {
-        @SerializedName("neagra")
-        NEAGRA,
+    @SerializedName("maxTeamPlayers")
+    override val maxTeamPlayers: Int
 
-        @SerializedName("rosie")
-        ROSIE,
-
-        @SerializedName("romb")
-        ROMB,
-
-        @SerializedName("trefla")
-        TREFLA
-    }
-
+) : GameTypeData {
 }
