@@ -32,6 +32,9 @@ class Card(
         return "$number$type"
     }
 
+    /**
+     * if this can cut card
+     */
     fun canCut(card: Card, playerCount: Int): Boolean {
         return card.number == number || number == 7 || (playerCount == 3 && number == 8)
     }
