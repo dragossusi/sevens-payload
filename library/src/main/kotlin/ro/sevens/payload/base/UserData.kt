@@ -22,4 +22,5 @@ package ro.sevens.pojo.base
 interface UserData {
     val id: Long
     val username: String
+    val image: String?
 }

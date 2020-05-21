@@ -24,6 +24,8 @@ import ro.sevens.payload.Card
  */
 open class PlayerTurnResponse(
     cards: List<Card>,
+    @SerializedName("players")
+    val players: List<SimplePlayerResponse>,
     @SerializedName("starting_player_id")
     val startingPlayerId: Long,
     @SerializedName("current_player_id")

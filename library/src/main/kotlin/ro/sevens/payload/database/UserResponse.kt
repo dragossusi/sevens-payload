@@ -22,11 +22,13 @@ import ro.sevens.pojo.base.UserData
  * along with server.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-class UserResponse(
+class UserResponse constructor(
     @SerializedName("id")
     override val id: Long,
     @SerializedName("username")
-    override val username: String
+    override val username: String,
+    @SerializedName("image")
+    override val image: String?
 ) : UserData {
 
 

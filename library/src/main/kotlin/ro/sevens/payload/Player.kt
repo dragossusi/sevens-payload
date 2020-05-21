@@ -21,9 +21,11 @@ import com.google.gson.annotations.SerializedName
  * along with server.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-class Player(
+class Player constructor(
     @SerializedName("id")
     val id: Long,
     @SerializedName("name")
-    val name: String
+    val name: String,
+    @SerializedName("image")
+    val image: String?
 )
