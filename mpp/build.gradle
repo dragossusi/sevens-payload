@@ -3,22 +3,23 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
-version 'unspecified'
-
-repositories {
-    mavenCentral()
-}
+version '0.0.1'
 
 kotlin {
     /* Targets configuration omitted. 
     *  To find out how to configure the targets, please follow the link:
     *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
-
+    jvm()
+    js()
+    macosX64()
+    iosArm32()
+    iosArm64()
+    iosX64()
     sourceSets {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib-common')
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
             }
         }
         commonTest {
@@ -29,20 +30,15 @@ kotlin {
         }
         jvm {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0") // JVM dependency
+                implementation kotlin('stdlib-jdk7')
+                api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0") // JVM dependency
             }
         }
 
         jsMain {
             dependencies {
                 implementation kotlin('stdlib-js')
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version"
-            }
-        }
-
-        nativeMain {
-            dependencies {
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serialization_version"
+                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version"
             }
         }
 

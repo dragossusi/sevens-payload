@@ -29,7 +29,7 @@ enum class GameTypeEnum(
     override val maxTeamPlayers: Int
 ) : GameTypeData {
 
-    NORMAL("Normal game", maxPlayers = 4, teamAllowed = false, maxTeamPlayers = 1),
+    NORMAL("Normal ro.sevens.game", maxPlayers = 4, teamAllowed = false, maxTeamPlayers = 1),
     DUEL("1V1", maxPlayers = 2, teamAllowed = false, maxTeamPlayers = 1)
 
 

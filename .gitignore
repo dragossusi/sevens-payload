@@ -7,3 +7,4 @@
 *.iws
 /local.properties
 /library/build/
+build/
