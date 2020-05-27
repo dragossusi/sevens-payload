@@ -1,2 +1,3 @@
 rootProject.name = 'payload'
 include ':library'
+include ':mpp'
