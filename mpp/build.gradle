@@ -11,15 +11,18 @@ kotlin {
     *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets */
     jvm()
     js()
-    macosX64()
-    iosArm32()
-    iosArm64()
-    iosX64()
+    ios() {
+        binaries {
+            framework {
+                baseName = "SevensPayload"
+            }
+        }
+    }
     sourceSets {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib-common')
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
             }
         }
         commonTest {
@@ -31,14 +34,20 @@ kotlin {
         jvm {
             dependencies {
                 implementation kotlin('stdlib-jdk7')
-                api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0") // JVM dependency
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
+                // JVM dependency
             }
         }
 
         jsMain {
             dependencies {
                 implementation kotlin('stdlib-js')
-                api "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version"
+            }
+        }
+        iosMain {
+            dependencies {
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serialization_version"
             }
         }
 

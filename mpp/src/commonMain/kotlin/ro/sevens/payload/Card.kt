@@ -52,6 +52,7 @@ class Card(
     val isPoint: Boolean
         get() = number == 10 || number == 11
 
+    @Serializable
     enum class Type {
         @SerialName("neagra")
         NEAGRA,
