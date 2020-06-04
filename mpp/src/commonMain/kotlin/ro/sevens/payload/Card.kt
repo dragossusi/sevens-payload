@@ -45,6 +45,13 @@ class Card(
         return card.number == number || number == 7 || (playerCount == 3 && number == 8)
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other is Card) {
+            if (theSame(other)) return true
+        }
+        return super.equals(other)
+    }
+
     fun theSame(card: Card): Boolean {
         return number == card.number && type == card.type
     }
