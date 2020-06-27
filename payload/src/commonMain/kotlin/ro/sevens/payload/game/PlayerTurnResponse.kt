@@ -29,17 +29,21 @@ open class PlayerTurnResponse(
     @SerialName("cards")
     override val cards: List<Card>,
     @SerialName("players")
-    val players: List<SimplePlayerResponse>,
+    val players: Array<SimplePlayerResponse>,
     @SerialName("starting_player_id")
     val startingPlayerId: Long,
     @SerialName("current_player_id")
     val currentPlayerId: Long,
     @SerialName("round_cards")
-    val roundCards: List<Card>
+    val roundCards: Array<Card>
 ) : CardsContainer {
 
     fun canEnd(type: GameTypeData): Boolean {
         return roundCards.size == type.maxPlayers
+    }
+
+    override fun toString(): String {
+        return "PlayerTurnResponse(cards=$cards, players=$players, startingPlayerId=$startingPlayerId, currentPlayerId=$currentPlayerId, roundCards=$roundCards)"
     }
 
 

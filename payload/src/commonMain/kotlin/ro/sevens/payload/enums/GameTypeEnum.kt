@@ -1,6 +1,5 @@
 package ro.sevens.payload.enums
 
-import kotlinx.serialization.Serializable
 import ro.sevens.payload.base.GameTypeData
 
 /**
@@ -29,7 +28,8 @@ enum class GameTypeEnum(
     override val maxTeamPlayers: Int
 ) : GameTypeData {
 
-    NORMAL("Normal ro.sevens.game", maxPlayers = 4, teamAllowed = false, maxTeamPlayers = 1),
+    NORMAL("Normal", maxPlayers = 4, teamAllowed = true, maxTeamPlayers = 2),
+    THREE("Three", maxPlayers = 3, teamAllowed = false, maxTeamPlayers = 1),
     DUEL("1V1", maxPlayers = 2, teamAllowed = false, maxTeamPlayers = 1)
 
 

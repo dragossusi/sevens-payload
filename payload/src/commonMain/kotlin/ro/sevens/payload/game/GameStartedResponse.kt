@@ -1,6 +1,7 @@
-package ro.sevens.payload.extensions
+package ro.sevens.payload.game
 
-import ro.sevens.payload.Card
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 
 /**
@@ -22,14 +23,9 @@ import ro.sevens.payload.Card
  * along with Sevens.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-val Collection<Card>.pointsCount: Int
-    get() = count { it.isPoint }
-
-val Array<Card>.pointsCount: Int
-    get() = count { it.isPoint }
-
-fun List<Card>.firstCut(playerCount: Int): Card? {
-    return firstOrNull {
-        it.isCut(playerCount)
-    }
+@Serializable
+class GameStartedResponse(
+    @SerialName("players")
+    val players: Array<SimplePlayerResponse>
+) {
 }

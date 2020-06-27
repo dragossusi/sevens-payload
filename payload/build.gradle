@@ -25,7 +25,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation kotlin('stdlib-common')
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serialization_version"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
             }
         }
         commonTest {
@@ -37,7 +37,6 @@ kotlin {
         jvm {
             dependencies {
                 implementation kotlin('stdlib-jdk7')
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
                 // JVM dependency
             }
         }
@@ -45,17 +44,14 @@ kotlin {
         jsMain {
             dependencies {
                 implementation kotlin('stdlib-js')
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:$serialization_version"
             }
         }
         iosMain {
             dependencies {
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serialization_version"
             }
         }
         linuxX64Main {
             dependencies {
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serialization_version"
             }
         }
 
