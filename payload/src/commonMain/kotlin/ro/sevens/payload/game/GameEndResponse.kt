@@ -25,9 +25,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 class GameEndResponse(
     @SerialName("won_points")
-    val wonPoints: Int,
+    val wonPoints: Int?,
     @SerialName("won_cards")
-    val wonCards: Int,
+    val wonCards: Int?,
     @SerialName("winner_id")
     val winner: Long,
     @SerialName("players")

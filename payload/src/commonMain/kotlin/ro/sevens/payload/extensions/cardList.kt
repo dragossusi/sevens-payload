@@ -1,6 +1,8 @@
 package ro.sevens.payload.extensions
 
 import ro.sevens.payload.Card
+import ro.sevens.payload.isCut
+import ro.sevens.payload.isSevensPoint
 
 
 /**
@@ -23,10 +25,10 @@ import ro.sevens.payload.Card
  *
  */
 val Collection<Card>.pointsCount: Int
-    get() = count { it.isPoint }
+    get() = count { it.isSevensPoint }
 
 val Array<Card>.pointsCount: Int
-    get() = count { it.isPoint }
+    get() = count { it.isSevensPoint }
 
 fun List<Card>.firstCut(playerCount: Int): Card? {
     return firstOrNull {

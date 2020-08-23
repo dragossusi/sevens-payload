@@ -34,17 +34,6 @@ class Card(
         return "$number$type"
     }
 
-    fun isCut(playerCount: Int): Boolean {
-        return number == 7 || (playerCount == 3 && number == 8)
-    }
-
-    /**
-     * if this can cut card
-     */
-    fun canCut(card: Card, playerCount: Int): Boolean {
-        return card.number == number || number == 7 || (playerCount == 3 && number == 8)
-    }
-
     override fun equals(other: Any?): Boolean {
         if (other is Card) {
             if (theSame(other)) return true
@@ -55,9 +44,6 @@ class Card(
     fun theSame(card: Card): Boolean {
         return number == card.number && type == card.type
     }
-
-    val isPoint: Boolean
-        get() = number == 10 || number == 11
 
     @Serializable
     enum class Type {

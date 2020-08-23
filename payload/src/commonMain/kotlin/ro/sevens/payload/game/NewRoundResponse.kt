@@ -17,9 +17,9 @@ class NewRoundResponse constructor(
     @SerialName("round_cards")
     val roundCards: Array<Card>,
     @SerialName("won_points")
-    val wonPoints: Int,
+    val wonPoints: Int?,
     @SerialName("won_cards")
-    val wonCards: Int
+    val wonCards: Int?
 ) {
 
     override fun toString(): String {
