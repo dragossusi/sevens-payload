@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
  *
  */
 @Serializable
-class Card(
+data class Card(
     @SerialName("number")
     val number: Int,
     @SerialName("type")
@@ -32,13 +32,6 @@ class Card(
 
     override fun toString(): String {
         return "$number$type"
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (other is Card) {
-            if (theSame(other)) return true
-        }
-        return super.equals(other)
     }
 
     fun theSame(card: Card): Boolean {

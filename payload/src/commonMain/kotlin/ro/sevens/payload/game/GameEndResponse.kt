@@ -32,6 +32,6 @@ class GameEndResponse(
     val winner: Long,
     @SerialName("players")
     val players: Array<SimplePlayerResponse>,
-    @SerialName("rounds")
-    val rounds: Array<RoundResponse>
+//    @SerialName("rounds")
+//    val rounds: Array<RoundResponse>
 )
