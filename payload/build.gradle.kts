@@ -1,9 +1,6 @@
-import java.io.FileInputStream
-import java.util.*
-
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    kotlin("plugin.serialization")
     `maven-publish`
     signing
 }
@@ -54,7 +51,6 @@ kotlin {
 }
 
 afterEvaluate {
-    val localProps = Properties()
     publishing {
         publications {
             // Creates a Maven publication called "release".
