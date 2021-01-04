@@ -9,3 +9,4 @@
 /library/build/
 build/
 artifacts/
+/buildSrc/.gradle
