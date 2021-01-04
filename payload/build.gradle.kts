@@ -39,13 +39,8 @@ kotlin {
 }
 
 publishing {
-    publications.withType<MavenPublication>().forEach {
-        // You can then customize attributes of the publication as shown below.
-        it.groupId = "ro.dragossusi.sevens"
-        it.artifactId = "payload"
-        version = Versions.app
-
-        it.pom {
+    publications.getByName<MavenPublication>("kotlinMultiplatform") {
+        pom {
             name.set("Sevens Payload")
             description.set("Payload data used in sevens")
             url.set("http://www.dragossusi.ro/sevens")
@@ -82,7 +77,5 @@ publishing {
 }
 
 signing {
-    publishing.publications.forEach { publication ->
-        sign(publication)
-    }
+    sign(publishing.publications["kotlinMultiplatform"])
 }

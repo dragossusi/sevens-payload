@@ -24,13 +24,16 @@ import ro.dragossusi.sevens.payload.isSevensPoint
  * along with Sevens.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-val Collection<ro.dragossusi.sevens.payload.Card>.pointsCount: Int
+@Suppress("unused")
+val Collection<Card>.pointsCount: Int
     get() = count { it.isSevensPoint }
 
-val Array<ro.dragossusi.sevens.payload.Card>.pointsCount: Int
+@Suppress("unused")
+val Array<Card>.pointsCount: Int
     get() = count { it.isSevensPoint }
 
-fun List<ro.dragossusi.sevens.payload.Card>.firstCut(playerCount: Int): ro.dragossusi.sevens.payload.Card? {
+@Suppress("unused")
+fun List<Card>.firstCut(playerCount: Int): Card? {
     return firstOrNull {
         it.isCut(playerCount)
     }
