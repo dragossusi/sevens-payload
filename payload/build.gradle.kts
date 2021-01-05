@@ -35,12 +35,6 @@ kotlin {
     }
 }
 
-val emptyJavadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
-val emptyJar by tasks.creating(Jar::class)
-
 publishing {
     publications.withType<MavenPublication> {
         addPom()
@@ -48,9 +42,6 @@ publishing {
     publications.getByName<MavenPublication>("kotlinMultiplatform") {
         addPom()
     }
-//    publications.withType<MavenPublication>().all {
-//        artifact(emptyJavadocJar.get())
-//    }
 }
 
 fun MavenPublication.addPom() {

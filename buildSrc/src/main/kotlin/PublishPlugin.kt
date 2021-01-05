@@ -3,9 +3,8 @@ import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
-import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.getByName
-import org.gradle.kotlin.dsl.withType
+import org.gradle.api.tasks.bundling.Jar
+import org.gradle.kotlin.dsl.*
 import org.gradle.plugins.signing.SigningPlugin
 
 /**
@@ -36,13 +35,23 @@ class PublishPlugin : Plugin<Project> {
         version = Versions.app
         group = Details.groupId
 
+
+        val emptyJavadocJar by tasks.registering(Jar::class) {
+            archiveClassifier.set("javadoc")
+        }
+
         publishing {
             publications {
                 publications.withType<MavenPublication> {
                     setupPublication(target)
                 }
+
+                publications.withType<MavenPublication>().all {
+                    artifact(emptyJavadocJar.get())
+                }
             }
             setupRepos(project)
+            setupSigning()
         }
     }
 
