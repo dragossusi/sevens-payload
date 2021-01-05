@@ -38,8 +38,16 @@ kotlin {
     }
 }
 
+val emptyJavadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
 publishing {
-    publications.getByName<MavenPublication>("kotlinMultiplatform") {
+    publications.withType<MavenPublication> {
+        artifactId = "payload"
+        group = "ro.dragossusi.sevens"
+        version = Versions.app
+
         pom {
             name.set("Sevens Payload")
             description.set("Payload data used in sevens")
@@ -74,8 +82,11 @@ publishing {
             }
         }
     }
+    publications.withType<MavenPublication>().all {
+        artifact(emptyJavadocJar.get())
+    }
 }
 
 signing {
-    sign(publishing.publications["kotlinMultiplatform"])
+    sign(publishing.publications)
 }
