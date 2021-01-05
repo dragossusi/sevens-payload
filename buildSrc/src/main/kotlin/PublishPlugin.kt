@@ -1,8 +1,10 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.getByName
 import org.gradle.kotlin.dsl.withType
 import org.gradle.plugins.signing.SigningPlugin
 
@@ -30,50 +32,66 @@ class PublishPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
         apply<MavenPublishPlugin>()
         apply<SigningPlugin>()
+
         version = Versions.app
         group = Details.groupId
+
         publishing {
             publications {
                 publications.withType<MavenPublication> {
-                    artifactId = target.name
-                    version = Versions.app
-                    group = Details.groupId
-                    pom {
-                        licenses {
-                            license {
-                                name.set("The Apache License, Version 2.0")
-                                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                            }
-                        }
-                        developers {
-                            developer {
-                                id.set("dragossusi")
-                                name.set("Dragos Rachieru")
-                                email.set("rachierudragos97@gmail.com")
-                            }
-                        }
-                        val scmName = target.property("SCM_NAME")
-                        scm {
-                            connection.set("scm:git:git://github.com/dragossusi/$scmName.git")
-                            developerConnection.set("scm:git:ssh://github.com/dragossusi/$scmName.git")
-                            url.set("https://github.com/dragossusi/$scmName/")
-                        }
-                    }
+                    setupPublication(target)
                 }
             }
-            repositories {
-                maven {
-                    name = "sonatype"
-                    url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-                    credentials {
-                        username = project.property("sonatype.username").toString()
-                        password = project.property("sonatype.password").toString()
-                    }
+            setupRepos(project)
+        }
+    }
+
+    private fun MavenPublication.setupPublication(target: Project) {
+
+//        artifactId = target.name
+        version = Versions.app
+        groupId = Details.groupId
+
+        pom {
+            licenses {
+                license {
+                    name.set("The Apache License, Version 2.0")
+                    url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                }
+            }
+            developers {
+                developer {
+                    id.set("dragossusi")
+                    name.set("Dragos Rachieru")
+                    email.set("rachierudragos97@gmail.com")
+                }
+            }
+            val scmName = target.property("SCM_NAME")
+            scm {
+                connection.set("scm:git:git://github.com/dragossusi/$scmName.git")
+                developerConnection.set("scm:git:ssh://github.com/dragossusi/$scmName.git")
+                url.set("https://github.com/dragossusi/$scmName/")
+            }
+        }
+    }
+
+    private fun PublishingExtension.setupRepos(project: Project) {
+        repositories {
+            maven {
+                name = "sonatype"
+                url = project.uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+                credentials {
+                    username = project.property("sonatype.username").toString()
+                    password = project.property("sonatype.password").toString()
                 }
             }
         }
+    }
+
+    private fun Project.setupSigning() {
         signing {
             sign(publishing.publications)
         }
     }
+
 }

@@ -5,9 +5,6 @@ plugins {
     signing
 }
 
-group = "ro.dragossusi.sevens"
-version = Versions.app
-
 kotlin {
     /* Targets configuration omitted. 
     *  To find out how to configure the targets, please follow the link:
@@ -42,29 +39,26 @@ val emptyJavadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
-
 val emptyJar by tasks.creating(Jar::class)
 
 publishing {
-//    publications.getByName<MavenPublication>("kotlinMultiplatform") {
-//        artifact(emptyJar)
-//        artifact(emptyJar) {
-//            classifier = "javadoc"
-//        }
-//        artifact(emptyJar) {
-//            classifier = "sources"
-//        }
-//    }
     publications.withType<MavenPublication> {
-        pom {
-            name.set("Sevens Payload")
-            description.set("Payload data used in sevens")
-            url.set("http://www.dragossusi.ro/sevens")
-        }
+        addPom()
+    }
+    publications.getByName<MavenPublication>("kotlinMultiplatform") {
+        addPom()
     }
 //    publications.withType<MavenPublication>().all {
 //        artifact(emptyJavadocJar.get())
 //    }
+}
+
+fun MavenPublication.addPom() {
+    pom {
+        name.set("Sevens Payload")
+        description.set("Payload data used in sevens")
+        url.set("http://www.dragossusi.ro/sevens")
+    }
 }
 
 apply<PublishPlugin>()
