@@ -42,51 +42,29 @@ val emptyJavadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
-publishing {
-    publications.withType<MavenPublication> {
-        artifactId = "payload"
-        group = "ro.dragossusi.sevens"
-        version = Versions.app
 
+val emptyJar by tasks.creating(Jar::class)
+
+publishing {
+//    publications.getByName<MavenPublication>("kotlinMultiplatform") {
+//        artifact(emptyJar)
+//        artifact(emptyJar) {
+//            classifier = "javadoc"
+//        }
+//        artifact(emptyJar) {
+//            classifier = "sources"
+//        }
+//    }
+    publications.withType<MavenPublication> {
         pom {
             name.set("Sevens Payload")
             description.set("Payload data used in sevens")
             url.set("http://www.dragossusi.ro/sevens")
-            licenses {
-                license {
-                    name.set("The Apache License, Version 2.0")
-                    url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                }
-            }
-            developers {
-                developer {
-                    id.set("dragossusi")
-                    name.set("Dragos Rachieru")
-                    email.set("rachierudragos97@gmail.com")
-                }
-            }
-            scm {
-                connection.set("scm:git:git://github.com/dragossusi/sevens-payload.git")
-                developerConnection.set("scm:git:ssh://github.com/dragossusi/sevens-payload.git")
-                url.set("https://github.com/dragossusi/sevens-payload/")
-            }
         }
     }
-    repositories {
-        maven {
-            name = "sonatype"
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = project.property("sonatype.username").toString()
-                password = project.property("sonatype.password").toString()
-            }
-        }
-    }
-    publications.withType<MavenPublication>().all {
-        artifact(emptyJavadocJar.get())
-    }
+//    publications.withType<MavenPublication>().all {
+//        artifact(emptyJavadocJar.get())
+//    }
 }
 
-signing {
-    sign(publishing.publications)
-}
+apply<PublishPlugin>()
