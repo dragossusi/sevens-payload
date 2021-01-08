@@ -39,7 +39,7 @@ open class PlayerTurnResponse(
 ) : CardsContainer {
 
     fun canEnd(type: GameTypeData): Boolean {
-        return roundCards.size == type.maxPlayers
+        return roundCards.isNotEmpty() && roundCards.size % type.maxPlayers == 0
     }
 
     override fun toString(): String {
