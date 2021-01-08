@@ -27,7 +27,7 @@ import ro.dragossusi.sevens.payload.base.GameTypeData
 @Serializable
 open class PlayerTurnResponse(
     @SerialName("cards")
-    override val cards: List<ro.dragossusi.sevens.payload.Card>,
+    override val cards: List<Card>,
     @SerialName("players")
     val players: Array<SimplePlayerResponse>,
     @SerialName("starting_player_id")
@@ -35,7 +35,7 @@ open class PlayerTurnResponse(
     @SerialName("current_player_id")
     val currentPlayerId: Long,
     @SerialName("round_cards")
-    val roundCards: Array<ro.dragossusi.sevens.payload.Card>
+    val roundCards: Array<Card>
 ) : CardsContainer {
 
     fun canEnd(type: GameTypeData): Boolean {

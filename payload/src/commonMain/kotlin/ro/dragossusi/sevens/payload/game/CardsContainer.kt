@@ -23,5 +23,5 @@ import ro.dragossusi.sevens.payload.Card
  *
  */
 interface CardsContainer {
-    val cards: List<ro.dragossusi.sevens.payload.Card>
+    val cards: List<Card>
 }

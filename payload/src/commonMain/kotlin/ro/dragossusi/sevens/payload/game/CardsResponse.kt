@@ -8,5 +8,5 @@ import ro.dragossusi.sevens.payload.Card
 @Serializable
 class CardsResponse(
     @SerialName("cards")
-    override val cards: List<ro.dragossusi.sevens.payload.Card>
+    override val cards: List<Card>
 ):CardsContainer

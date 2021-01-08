@@ -23,21 +23,21 @@ package ro.dragossusi.sevens.payload
 /**
  * if card is cut
  */
-val ro.dragossusi.sevens.payload.Card.isChangeColor: Boolean
+val Card.isChangeColor: Boolean
     get() = number == 11
 
 /**
  * if can stop player
  */
-val ro.dragossusi.sevens.payload.Card.isStopPlayer: Boolean
+val Card.isStopPlayer: Boolean
     get() = number == 4
 
-val ro.dragossusi.sevens.payload.Card.isDrawCard: Boolean
+val Card.isDrawCard: Boolean
     get() = number == 2 || number == 3
 
 /**
  * if this can cut card
  */
-fun ro.dragossusi.sevens.payload.Card.canAddMore(card: ro.dragossusi.sevens.payload.Card): Boolean {
+fun Card.canAddMore(card: Card): Boolean {
     return isDrawCard && (card.number == number || card.type == type)
 }

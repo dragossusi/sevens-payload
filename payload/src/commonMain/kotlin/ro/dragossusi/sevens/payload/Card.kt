@@ -27,14 +27,14 @@ data class Card(
     @SerialName("number")
     val number: Int,
     @SerialName("type")
-    val type: ro.dragossusi.sevens.payload.Card.Type
+    val type: Type
 ) {
 
     override fun toString(): String {
         return "$number$type"
     }
 
-    fun theSame(card: ro.dragossusi.sevens.payload.Card): Boolean {
+    fun theSame(card: Card): Boolean {
         return number == card.number && type == card.type
     }
 

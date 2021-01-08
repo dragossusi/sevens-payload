@@ -7,7 +7,7 @@ import ro.dragossusi.sevens.payload.Card
 @Serializable
 class NewRoundResponse constructor(
     @SerialName("cards")
-    val cards: Array<ro.dragossusi.sevens.payload.Card>,
+    val cards: Array<Card>,
     @SerialName("players")
     val players: Array<SimplePlayerResponse>,
     @SerialName("starting_player_id")
@@ -15,7 +15,7 @@ class NewRoundResponse constructor(
     @SerialName("current_player_id")
     val currentPlayerId: Long,
     @SerialName("round_cards")
-    val roundCards: Array<ro.dragossusi.sevens.payload.Card>,
+    val roundCards: Array<Card>,
     @SerialName("won_points")
     val wonPoints: Int?,
     @SerialName("won_cards")

@@ -23,16 +23,16 @@ package ro.dragossusi.sevens.payload
 /**
  * if card is cut
  */
-fun ro.dragossusi.sevens.payload.Card.isCut(playerCount: Int): Boolean {
+fun Card.isCut(playerCount: Int): Boolean {
     return number == 7 || (playerCount == 3 && number == 8)
 }
 
 /**
  * if this can cut card
  */
-fun ro.dragossusi.sevens.payload.Card.canCut(card: ro.dragossusi.sevens.payload.Card, playerCount: Int): Boolean {
+fun Card.canCut(card: Card, playerCount: Int): Boolean {
     return card.number == number || number == 7 || (playerCount == 3 && number == 8)
 }
 
-val ro.dragossusi.sevens.payload.Card.isSevensPoint: Boolean
+val Card.isSevensPoint: Boolean
     get() = number == 10 || number == 11

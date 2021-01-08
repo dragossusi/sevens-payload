@@ -30,6 +30,6 @@ class RoundResponse(
     @SerialName("winner")
     override val winner: Long,
     @SerialName("cards")
-    override val cards: List<ro.dragossusi.sevens.payload.Card>
+    override val cards: List<Card>
 ) : RoundData {
 }
