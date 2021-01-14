@@ -1,6 +1,7 @@
 package ro.dragossusi.sevens.payload.serialization
 
 import kotlinx.serialization.modules.SerializersModule
+import ro.dragossusi.sevens.payload.ImageResponse
 import ro.dragossusi.sevens.payload.base.*
 import ro.dragossusi.sevens.payload.database.*
 
@@ -30,5 +31,6 @@ fun payloadSerializationModule(): SerializersModule {
         polymorphic(RoomData::class, RoomResponse::class, RoomResponse.serializer())
         polymorphic(RoomStatusData::class, RoomStatusResponse::class, RoomStatusResponse.serializer())
         polymorphic(FriendRequestData::class, FriendRequestResponse::class, FriendRequestResponse.serializer())
+        polymorphic(ImageData::class, ImageResponse::class, ImageResponse.serializer())
     }
 }

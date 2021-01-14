@@ -1,4 +1,6 @@
-package ro.dragossusi.sevens.payload
+package ro.dragossusi.sevens.payload.card
+
+import ro.dragossusi.sevens.payload.Card
 
 /**
  * sevens-game
@@ -23,21 +25,16 @@ package ro.dragossusi.sevens.payload
 /**
  * if card is cut
  */
-val Card.isChangeColor: Boolean
-    get() = number == 11
-
-/**
- * if can stop player
- */
-val Card.isStopPlayer: Boolean
-    get() = number == 4
-
-val Card.isDrawCard: Boolean
-    get() = number == 2 || number == 3
+fun Card.isCut(playerCount: Int): Boolean {
+    return number == 7 || (playerCount == 3 && number == 8)
+}
 
 /**
  * if this can cut card
  */
-fun Card.canAddMore(card: Card): Boolean {
-    return isDrawCard && (card.number == number || card.type == type)
+fun Card.canCut(card: Card, playerCount: Int): Boolean {
+    return card.number == number || number == 7 || (playerCount == 3 && number == 8)
 }
+
+val Card.isSevensPoint: Boolean
+    get() = number == 10 || number == 11

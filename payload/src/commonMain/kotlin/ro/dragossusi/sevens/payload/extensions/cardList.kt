@@ -1,8 +1,8 @@
 package ro.dragossusi.sevens.payload.extensions
 
 import ro.dragossusi.sevens.payload.Card
-import ro.dragossusi.sevens.payload.isCut
-import ro.dragossusi.sevens.payload.isSevensPoint
+import ro.dragossusi.sevens.payload.card.isCut
+import ro.dragossusi.sevens.payload.card.isSevensPoint
 
 
 /**
