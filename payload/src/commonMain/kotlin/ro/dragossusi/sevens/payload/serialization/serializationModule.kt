@@ -32,5 +32,6 @@ fun payloadSerializationModule(): SerializersModule {
         polymorphic(RoomStatusData::class, RoomStatusResponse::class, RoomStatusResponse.serializer())
         polymorphic(FriendRequestData::class, FriendRequestResponse::class, FriendRequestResponse.serializer())
         polymorphic(ImageData::class, ImageResponse::class, ImageResponse.serializer())
+        polymorphic(LobbyData::class, LobbyResponse::class, LobbyResponse.serializer())
     }
 }
