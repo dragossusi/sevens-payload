@@ -25,21 +25,28 @@ import ro.dragossusi.sevens.payload.Card
 /**
  * if card is cut
  */
-val Card.isChangeColor: Boolean
+val Card.isChangeColorMacao: Boolean
     get() = number == 11
 
 /**
  * if can stop player
  */
-val Card.isStopPlayer: Boolean
+val Card.isStopPlayerMacao: Boolean
     get() = number == 4
 
-val Card.isDrawCard: Boolean
+val Card.isDrawCardMacao: Boolean
     get() = number == 2 || number == 3
+
+/**
+ * if card can be placed
+ */
+fun Card.canBePlacedMacao(after:Card):Boolean{
+    return type == after.type || number == after.number
+}
 
 /**
  * if this can cut card
  */
-fun Card.canAddMore(card: Card): Boolean {
-    return isDrawCard && (card.number == number || card.type == type)
+fun Card.canDrawMoreMacao(after: Card): Boolean {
+    return isDrawCardMacao && (after.number == number || after.type == type)
 }
