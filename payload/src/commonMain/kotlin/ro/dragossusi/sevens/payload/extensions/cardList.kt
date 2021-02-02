@@ -1,8 +1,8 @@
 package ro.dragossusi.sevens.payload.extensions
 
 import ro.dragossusi.sevens.payload.Card
-import ro.dragossusi.sevens.payload.card.isCut
-import ro.dragossusi.sevens.payload.card.isSevensPoint
+import ro.dragossusi.sevens.payload.card.isCutSevens
+import ro.dragossusi.sevens.payload.card.isPointSevens
 
 
 /**
@@ -26,15 +26,15 @@ import ro.dragossusi.sevens.payload.card.isSevensPoint
  */
 @Suppress("unused")
 val Collection<Card>.pointsCount: Int
-    get() = count { it.isSevensPoint }
+    get() = count { it.isPointSevens }
 
 @Suppress("unused")
 val Array<Card>.pointsCount: Int
-    get() = count { it.isSevensPoint }
+    get() = count { it.isPointSevens }
 
 @Suppress("unused")
-fun List<Card>.firstCut(playerCount: Int): Card? {
+fun List<Card>.firstCutSevens(playerCount: Int): Card? {
     return firstOrNull {
-        it.isCut(playerCount)
+        it.isCutSevens(playerCount)
     }
 }

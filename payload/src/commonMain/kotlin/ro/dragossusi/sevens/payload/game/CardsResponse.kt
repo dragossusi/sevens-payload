@@ -6,7 +6,7 @@ import ro.dragossusi.sevens.payload.Card
 
 @Deprecated("dont extend this")
 @Serializable
-class CardsResponse(
+data class CardsResponse(
     @SerialName("cards")
     override val cards: List<Card>
-):CardsContainer
+) : CardsContainer

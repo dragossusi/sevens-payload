@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import ro.dragossusi.sevens.payload.Card
 
 @Serializable
-class NewRoundResponse constructor(
+data class NewRoundResponse constructor(
     @SerialName("cards")
     val cards: Array<Card>,
     @SerialName("players")

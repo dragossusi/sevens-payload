@@ -24,7 +24,7 @@ import ro.dragossusi.sevens.payload.Card
  *
  */
 @Serializable
-class RoundResponse(
+data class RoundResponse(
     @SerialName("startingPlayer")
     override val startingPlayer: Long,
     @SerialName("winner")

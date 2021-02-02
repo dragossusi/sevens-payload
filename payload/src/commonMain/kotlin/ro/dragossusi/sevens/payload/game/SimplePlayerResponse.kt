@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-class SimplePlayerResponse constructor(
+data class SimplePlayerResponse constructor(
     @SerialName("id")
     val id: Long,
     @SerialName("name")

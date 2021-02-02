@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
  *
  */
 @Serializable
-class GameEndResponse(
+data class GameEndResponse(
     @SerialName("won_points")
     val wonPoints: Int?,
     @SerialName("won_cards")
