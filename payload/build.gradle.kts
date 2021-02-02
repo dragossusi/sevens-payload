@@ -5,6 +5,8 @@ plugins {
     signing
 }
 
+version = Versions.app
+
 kotlin {
     /* Targets configuration omitted. 
     *  To find out how to configure the targets, please follow the link:
@@ -12,7 +14,7 @@ kotlin {
     jvm()
     js {
         nodejs()
-        browser()
+//        browser()
     }
 
     sourceSets {

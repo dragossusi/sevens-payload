@@ -5,6 +5,8 @@ buildscript {
     }
 }
 
+version = Versions.app
+
 plugins {
 //    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version"
     id("org.jetbrains.kotlin.multiplatform") version Versions.kotlin apply false

@@ -24,7 +24,6 @@ import kotlin.js.JsExport
  * along with Payload.  If not, see [License](http://www.gnu.org/licenses/) .
  *
  */
-@JsExport
 @Serializable
 data class Player constructor(
     @SerialName("id")
