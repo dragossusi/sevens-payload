@@ -1,4 +1,4 @@
-rootProject.name = "Payload"
+rootProject.name = "sevens-payload"
 include("payload")
 
 
