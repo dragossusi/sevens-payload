@@ -25,22 +25,17 @@ import ro.dragossusi.sevens.payload.base.GameTypeData
  *
  */
 @Serializable
-open class PlayerTurnResponse(
+data class PlayerTurnResponse(
     @SerialName("cards")
     override val cards: List<Card>,
     @SerialName("players")
-    val players: Array<SimplePlayerResponse>,
+    val players: List<SimplePlayerResponse>,
     @SerialName("starting_player_id")
     val startingPlayerId: Long,
     @SerialName("current_player_id")
     val currentPlayerId: Long,
     @SerialName("round_cards")
-    val roundCards: Array<Card>
+    val roundCards: List<Card>
 ) : CardsContainer {
-
-    override fun toString(): String {
-        return "PlayerTurnResponse(cards=$cards, players=$players, startingPlayerId=$startingPlayerId, currentPlayerId=$currentPlayerId, roundCards=$roundCards)"
-    }
-
 
 }

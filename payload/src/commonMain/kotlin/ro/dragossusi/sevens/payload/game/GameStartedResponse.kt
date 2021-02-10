@@ -26,6 +26,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GameStartedResponse(
     @SerialName("players")
-    val players: Array<SimplePlayerResponse>
+    val players: List<SimplePlayerResponse>
 ) {
 }

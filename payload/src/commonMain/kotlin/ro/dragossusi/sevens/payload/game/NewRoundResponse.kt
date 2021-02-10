@@ -7,22 +7,19 @@ import ro.dragossusi.sevens.payload.Card
 @Serializable
 data class NewRoundResponse constructor(
     @SerialName("cards")
-    val cards: Array<Card>,
+    val cards: List<Card>,
     @SerialName("players")
-    val players: Array<SimplePlayerResponse>,
+    val players: List<SimplePlayerResponse>,
     @SerialName("starting_player_id")
     val startingPlayerId: Long,
     @SerialName("current_player_id")
     val currentPlayerId: Long,
     @SerialName("round_cards")
-    val roundCards: Array<Card>,
+    val roundCards: List<Card>,
     @SerialName("won_points")
     val wonPoints: Int?,
     @SerialName("won_cards")
     val wonCards: Int?
 ) {
 
-    override fun toString(): String {
-        return "NewRoundResponse(cards=${cards.contentToString()}, players=$players, startingPlayerId=$startingPlayerId, currentPlayerId=$currentPlayerId, roundCards=${roundCards.contentToString()}, wonPoints=$wonPoints, wonCards=$wonCards)"
-    }
 }
