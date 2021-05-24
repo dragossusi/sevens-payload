@@ -10,7 +10,7 @@ version = Versions.app
 kotlin {
 
     jvm()
-    js(BOTH) {
+    js {
         nodejs()
     }
     ios {
